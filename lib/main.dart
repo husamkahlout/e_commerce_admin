@@ -1,7 +1,6 @@
 import 'package:e_commerce/providers/auth_provider.dart';
 import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/providers/firestore_provider.dart';
-import 'package:e_commerce/providers/storage_provider.dart';
 import 'package:e_commerce/router/router.dart';
 import 'package:e_commerce/views/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,9 +27,6 @@ class MyApp extends StatelessWidget {
         // FirestoreProvider
         ChangeNotifierProvider<FirestoreProvider>(
           create: (context) => FirestoreProvider()),
-        // StorageProvider
-        ChangeNotifierProvider<StorageProvider>(
-          create: (context) => StorageProvider()),
       ],
       child: MaterialApp(
         navigatorKey:AppRouter.navKey,

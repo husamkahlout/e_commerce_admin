@@ -20,14 +20,6 @@ class UpdateCategory extends StatelessWidget {
         appBar: AppBar(
           title: Text("Edit Category"),
           backgroundColor: kPrimaryColor,
-          actions: [
-            IconButton(
-              onPressed: () {
-                authProvider.signOut();
-              },
-              icon: const Icon(Icons.logout),
-            ),
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(

@@ -20,14 +20,6 @@ class UpdateProduct extends StatelessWidget {
         appBar: AppBar(
           title: Text("Edit Product"),
           backgroundColor: kPrimaryColor,
-          actions: [
-            IconButton(
-              onPressed: () {
-                authProvider.signOut();
-              },
-              icon: const Icon(Icons.logout),
-            ),
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(

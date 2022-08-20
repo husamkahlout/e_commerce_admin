@@ -23,15 +23,6 @@ class AddProduct extends StatelessWidget {
             appBar: AppBar(
                title: const Text("Add product"),
               backgroundColor: kPrimaryColor,
-              actions: [
-                IconButton(
-                  onPressed: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => CategoriesScreen())));
-
-                  },
-                  icon: const Icon(Icons.logout),
-                ),
-              ],
             ),
             body: Center(
               child: SingleChildScrollView(

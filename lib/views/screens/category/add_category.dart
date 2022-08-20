@@ -14,13 +14,6 @@ class AddCategory extends StatelessWidget {
       appBar: AppBar(
         title: Text("Add Category"),
         backgroundColor: kPrimaryColor,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false).signOut();
-              },
-              icon: const Icon(Icons.logout_rounded))
-        ],
       ),
       body:
           Consumer<FirestoreProvider>(builder: (context, firestorProvider, x) {
