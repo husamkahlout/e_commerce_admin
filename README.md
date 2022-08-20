@@ -1,10 +1,10 @@
-# e_commerce
+# e_commerce_admin
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+E-Commerce project for admin , using firebase auth, firesotre and storage .
 
 A few resources to get you started if this is your first Flutter project:
 
