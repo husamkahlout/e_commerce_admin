@@ -44,16 +44,19 @@ class CategoriesScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ///============================== Menu ====================================///
-                              Container(
-                                child: const Icon(
-                                  Icons.grid_view_rounded,
-                                  size: 25,
-                                  color: kPrimaryColor,
-                                ),
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: kPrimaryLightColor,
-                                  borderRadius: BorderRadius.circular(12),
+                              InkWell(
+                                onTap: () => authProvider.signOut(),
+                                child: Container(
+                                  child: const Icon(
+                                    Icons.grid_view_rounded,
+                                    size: 25,
+                                    color: kPrimaryColor,
+                                  ),
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: kPrimaryLightColor,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                 ),
                               ),
 

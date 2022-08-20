@@ -64,7 +64,10 @@ class CategoryWidget extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: InkWell(
-                                            onTap: () => AppRouter.NavigateToWidget(UpdateCategory(category: category)),
+                                            onTap: () {
+                                              firestoreProvider.categoryNameController.text = category.name ;
+                                              AppRouter.NavigateToWidget(UpdateCategory(category: category));
+                                            },
                                             child: const Icon(
                                               Icons.edit,
                                               color: Colors.white,
