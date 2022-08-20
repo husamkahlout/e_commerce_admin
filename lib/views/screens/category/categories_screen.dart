@@ -16,7 +16,7 @@ class CategoriesScreen extends StatelessWidget {
       return Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // AppRouter.NavigateWithReplacementToWidget(AddCategory());
+              firestoreProvider.categoryNameController.clear();
               Navigator.of(context).push(
                   MaterialPageRoute(builder: ((context) => AddCategory())));
             },

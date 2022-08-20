@@ -20,7 +20,11 @@ class ProductsScreen extends StatelessWidget {
       return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(
+            firestoreProvider.productNameController.clear();
+            firestoreProvider.productDescriptionController.clear();
+            firestoreProvider.productPriceController.clear();
+            firestoreProvider.productQuantityController.clear();
+            Navigator.of(context).push(
                 MaterialPageRoute(builder: ((context) => AddProduct(catId))));
           },
           backgroundColor: kPrimaryColor,
@@ -29,64 +33,67 @@ class ProductsScreen extends StatelessWidget {
         body: SafeArea(
           child: ListView(
               shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    padding: const EdgeInsets.all(18),
-            children : [
-              Container(
-                width:MediaQuery.of(context).size.width,
-              height: 620,
-                child: SingleChildScrollView(
-                  child: Column(
-                      // padding: const EdgeInsets.all(18),
-                  children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ///============================== Menu ====================================///
-                      Container(
-                        child: const Icon(
-                          Icons.grid_view_rounded,
-                          size: 25,
-                          color: kPrimaryColor,
-                        ),
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: kPrimaryLightColor,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                            
-                      ///============================== Profile Image ====================================///
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        width: 45,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: const CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/husam.png"),
-                        ),
-                      )
-                    ],
+              scrollDirection: Axis.vertical,
+              padding: const EdgeInsets.all(18),
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 620,
+                  child: SingleChildScrollView(
+                    child: Column(
+                        // padding: const EdgeInsets.all(18),
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ///============================== Menu ====================================///
+                              Container(
+                                child: const Icon(
+                                  Icons.grid_view_rounded,
+                                  size: 25,
+                                  color: kPrimaryColor,
+                                ),
+                                padding: const EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: kPrimaryLightColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+
+                              ///============================== Profile Image ====================================///
+                              Container(
+                                padding: const EdgeInsets.all(5),
+                                width: 45,
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color: kPrimaryColor,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage("assets/images/husam.png"),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          firestoreProvider.products.isEmpty
+                              ? const Center(child: CircularProgressIndicator())
+                              : Column(
+                                  children: List.generate(
+                                      firestoreProvider.products.length,
+                                      (index) {
+                                  return ProductWidget(
+                                      product:
+                                          firestoreProvider.products[index],
+                                      catId: catId);
+                                })),
+                        ]),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  firestoreProvider.products.isEmpty
-                      ? const Center(child: CircularProgressIndicator())
-                      : Column(
-                          children:
-                              List.generate(firestoreProvider.products.length, (index) {
-                          return ProductWidget(
-                              product: firestoreProvider.products[index], catId: catId);
-                        })),
-                            ]),
                 ),
-              ), 
-              ] 
-          ),
+              ]),
         ),
       );
     });
